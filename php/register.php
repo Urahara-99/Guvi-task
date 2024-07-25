@@ -6,12 +6,12 @@ error_reporting(0);
 $mysqlHost = 'localhost';
 $mysqlUser = 'root';
 $mysqlPass = '';
-$mysqlDb = 'user_management'; // MySQL database
+$mysqlDb = 'user_management'; 
 
 // MongoDB credentials
 $mongoHost = 'localhost';
 $mongoPort = 27017;
-$mongoDb = 'user_management'; // MongoDB database
+$mongoDb = 'user_management'; 
 
 // Create MySQL connection
 $mysqli = new mysqli($mysqlHost, $mysqlUser, $mysqlPass, $mysqlDb);
@@ -29,7 +29,7 @@ $mongoCollection = 'profiles';
 // Get POST data
 $username = $_POST['username'];
 $email = $_POST['email'];
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
+$password = password_hash($_POST['password'], PASSWORD_BCRYPT); 
 $dob = $_POST['dob'];
 $age = $_POST['age'];
 $contact_number = $_POST['contact_number'];
