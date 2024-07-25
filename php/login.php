@@ -46,9 +46,10 @@ if ($result->num_rows > 0) {
         echo json_encode(["status" => "Error: Invalid credentials."]);
     }
 } else {
-    echo json_encode(["status" => "Error: Invalid credentials."]);
+    echo json_encode(["status" => "Error: User not found."]);
 }
 
 // Close the statement and connection
 $stmt->close();
 $conn->close();
+?>
