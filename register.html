@@ -13,7 +13,7 @@
     <div class="container">
         <h2 class="register-heading">REGISTER</h2>
         <div class="form-container">
-            <form id="registerForm">
+            <form id="registerForm" novalidate>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label for="username">Username:</label>
@@ -37,18 +37,18 @@
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label for="age">Age:</label>
-                        <input type="number" class="form-control input-short" id="age" name="age" required>
+                        <input type="number" class="form-control input-short" id="age" name="age" required min="1" max="999">
                     </div>
                     <div class="col-md-6">
                         <label for="contact_number">Contact Number:</label>
-                        <input type="text" class="form-control input-short" id="contact_number" name="contact_number" required>
+                        <input type="text" class="form-control input-short" id="contact_number" name="contact_number" required pattern="\d{10}" title="Contact number must be exactly 10 digits">
                     </div>
+                </div>
                 <button type="submit" class="btn btn-custom">Register</button>
+                <div id="responseMessage"></div>
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </form>
         </div>
-        <div id="responseMessage"></div>
-        <p>Already have an account? <a href="login.html">Login here</a></p>
     </div>
-</form>
-</div>
 </body>
 </html>
