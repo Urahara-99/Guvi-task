@@ -2,21 +2,36 @@ $(document).ready(function () {
     $('#registerForm').on('submit', function (e) {
         e.preventDefault();
 
-        // Gather form data
+        var dob = new Date($('#dob').val());
+        var age = $('#age').val();
+        var contact_number = $('#contact_number').val();
+        var today = new Date();
+        var ageDiff = today.getFullYear() - dob.getFullYear();
+        var monthDiff = today.getMonth() - dob.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+            ageDiff--;
+        }
+
+        // Validate age matches the date of birth
+        if (ageDiff != age) {
+            $('#responseMessage').html('<div class="alert alert-danger">Age does not match the date of birth.</div>');
+            return;
+        }
+
+        // Validate contact number is exactly 10 digits and an integer
+        if (!/^\d{10}$/.test(contact_number)) {
+            $('#responseMessage').html('<div class="alert alert-danger">Contact number must be exactly 10 digits.</div>');
+            return;
+        }
+
         var formData = {
             username: $('#username').val(),
             email: $('#email').val(),
             password: $('#password').val(),
             dob: $('#dob').val(),
             age: $('#age').val(),
-            contact_number: $('#contact_number').val()
+            contact_number: contact_number
         };
-
-        // Optional: Basic client-side validation
-        if (!formData.username || !formData.email || !formData.password || !formData.dob || !formData.age || !formData.contact_number) {
-            $('#responseMessage').html('<div class="alert alert-danger">Please fill in all required fields.</div>');
-            return;
-        }
 
         $.ajax({
             url: 'php/register.php', // URL to PHP script
